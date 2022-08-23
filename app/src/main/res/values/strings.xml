@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="button_item_label">Button Item</string>
+    <string name="location">%s, %s</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind">Wind</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="status">Clear Sky</string>
+    <string name="current_temperature">%s ºC</string>
+    <string name="minimum_temperature">Min. Temperature: %s ºC</string>
+    <string name="maximum_temperature">Max. Temperature: %s ºC</string>
+    <string name="sunrise_time">05:00 AM</string>
+    <string name="sunset_time">19:00 PM</string>
+    <string name="wind_speed">%s m/s NNE</string>
+    <string name="pressure_value">%s hPa</string>
+    <string name="humidity_value">%s</string>
+    <string name="error_message">An error has occurred</string>
+    <string name="update_date">23 August 2022, 14:08 PM</string>
+    <string name="updated_at">Updated at %s</string>
+</resources>

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 class CityListAdapter:
     RecyclerView.Adapter<CityListAdapter.CityListViewHolder>() {
 
-    private val list = listOf("Lisbon","Madrid","Paris","Berlin","Copenhagen","Rome","London","Dublin","Prague","Vienna")
+    private val list = mutableListOf("Lisbon","Madrid","Paris","Berlin","Copenhagen","Rome","London","Dublin","Prague","Vienna")
 
     /**
      * Provides a reference for the views needed to display items in your list.
@@ -25,7 +25,7 @@ class CityListAdapter:
     }
 
     /**
-     * Creates new views with R.layout.item_view as its template
+     * Creates new views with R.layout.city_view as its template
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityListViewHolder {
         val layout = LayoutInflater
@@ -46,7 +46,6 @@ class CityListAdapter:
 
         // Assigns a [OnClickListener] to the button contained in the [ViewHolder]
         holder.button.setOnClickListener {
-            // Create an action from WordList to DetailList
             // using the required arguments
             val action = CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(cityName = holder.button.text.toString())
             holder.view.findNavController().navigate(action)

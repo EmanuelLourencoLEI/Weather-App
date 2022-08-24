@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/button_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:contentDescription="@string/button_item_label"
-    android:padding="8dp" />
+    android:padding="8dp"
+    tools:ignore="RedundantDescriptionCheck" />

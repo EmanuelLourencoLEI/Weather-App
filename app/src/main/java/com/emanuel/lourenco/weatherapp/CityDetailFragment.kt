@@ -17,7 +17,6 @@ import java.util.*
 class CityDetailFragment : Fragment() {
     companion object {
         const val CITY_NAME = "city_name"
-        const val API_KEY = "3e9a4c19733ddb2558c5f67152df4ba4"
     }
 
     private var _binding: FragmentCityDetailBinding? = null
@@ -79,7 +78,7 @@ class CityDetailFragment : Fragment() {
 
         val queue = Volley.newRequestQueue(this.context)
         val url =
-            "https://api.openweathermap.org/data/2.5/weather?q=$cityId&units=metric&appid=$API_KEY"
+            "https://api.openweathermap.org/data/2.5/weather?q=$cityId&units=metric&appid=${BuildConfig.API_KEY}"
         val jsonRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->

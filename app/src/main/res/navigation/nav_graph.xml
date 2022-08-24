@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/cityListFragment">
+    app:startDestination="@id/launchScreenFragment">
 
     <fragment
         android:id="@+id/cityListFragment"
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_cityListFragment_to_cityDetailFragment"
             app:destination="@id/cityDetailFragment" />
+        <argument
+            android:name="last_location"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/cityDetailFragment"
@@ -24,5 +27,14 @@
         <argument
             android:name="city_name"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchScreenFragment"
+        android:name="com.emanuel.lourenco.weatherapp.StartScreenFragment"
+        android:label="fragment_launch_screen"
+        tools:layout="@layout/fragment_launch_screen" >
+        <action
+            android:id="@+id/action_launchScreenFragment_to_cityListFragment"
+            app:destination="@id/cityListFragment" />
     </fragment>
 </navigation>

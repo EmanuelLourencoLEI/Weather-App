@@ -7,21 +7,9 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class CityListAdapter :
+class CityListAdapter(private val cityList: List<String>) :
     RecyclerView.Adapter<CityListAdapter.CityListViewHolder>() {
 
-    private val cityList = listOf(
-        "Lisbon",
-        "Madrid",
-        "Paris",
-        "Berlin",
-        "Copenhagen",
-        "Rome",
-        "London",
-        "Dublin",
-        "Prague",
-        "Vienna"
-    )
 
     /**
      * Provides a reference for the views needed to display items in your list.

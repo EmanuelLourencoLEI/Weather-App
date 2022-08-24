@@ -12,11 +12,37 @@ class CityListFragment : Fragment() {
     private var _binding: FragmentCityListBinding? = null
     private val binding get() = _binding!!
 
+    private val cityList = mutableListOf(
+        "Lisbon",
+        "Madrid",
+        "Paris",
+        "Berlin",
+        "Copenhagen",
+        "Rome",
+        "London",
+        "Dublin",
+        "Prague",
+        "Vienna",
+    )
+
+    companion object {
+        const val LAST_LOCATION = "last_location"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            cityList.add(it.getString(LAST_LOCATION).toString())
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         // Retrieve and inflate the layout for this fragment
         _binding = FragmentCityListBinding.inflate(inflater, container, false)
         return binding.root
@@ -24,7 +50,7 @@ class CityListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = CityListAdapter()
+        binding.recyclerView.adapter = CityListAdapter(cityList)
     }
 
     override fun onDestroyView() {

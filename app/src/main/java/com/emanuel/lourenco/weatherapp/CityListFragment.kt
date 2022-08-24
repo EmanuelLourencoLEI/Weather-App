@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.emanuel.lourenco.weatherapp.databinding.FragmentCityListBinding
 
+/**
+ * Fragment for the display of the cities. Displays a [RecyclerView] of cities.
+ */
 class CityListFragment : Fragment() {
+    // Binding object instance corresponding to the fragment_city_list.xml layout
     private var _binding: FragmentCityListBinding? = null
     private val binding get() = _binding!!
 
+    //List of cities used to check weather information
     private val cityList = mutableListOf(
         "Lisbon",
         "Madrid",
@@ -26,15 +32,12 @@ class CityListFragment : Fragment() {
         "Vienna",
     )
 
-    companion object {
-        const val LAST_LOCATION = "last_location"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            cityList.add(it.getString(LAST_LOCATION).toString())
+            //Adds the last city location of the user to the city list
+            cityList.add(it.getString("last_location").toString())
         }
     }
 
@@ -49,23 +52,39 @@ class CityListFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Called when the view is created.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.city_list)
+
+        //Sets the action title
+        (requireActivity() as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.city_list)
+
+        //Sets the fragment to show the custom action bar
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
 
         translateCities()
 
+        // Sets the LayoutManager of the recyclerview
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        // Sets the Adapter of the recyclerview
         binding.recyclerView.adapter = CityListAdapter(cityList)
     }
 
+    /**
+     * Called before fragment is destroyed.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    private fun translateCities(){
+    /**
+     * Function that translates the names of the cities depending on the language selected.
+     */
+    private fun translateCities() {
         cityList[0] = getString(R.string.lisbon)
         cityList[3] = getString(R.string.berlin)
         cityList[4] = getString(R.string.copenhagen)

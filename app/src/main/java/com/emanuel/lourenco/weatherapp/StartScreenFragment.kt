@@ -20,11 +20,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.*
 import java.util.*
 import kotlin.system.exitProcess
 
-
+/**
+ * Entry fragment for the app. Displays a Launcher Screen and asks location permissions to the user.
+ */
 class StartScreenFragment : Fragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var geoCoder: Geocoder
@@ -58,6 +61,9 @@ class StartScreenFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
     }
 
+    /**
+     * Called before fragment is destroyed.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         completeCityId = ""

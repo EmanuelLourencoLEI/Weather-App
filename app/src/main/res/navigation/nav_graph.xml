@@ -21,9 +21,6 @@
         android:id="@+id/cityDetailFragment"
         android:name="com.emanuel.lourenco.weatherapp.CityDetailFragment"
         android:label="CityDetailFragment" >
-        <action
-            android:id="@+id/action_cityDetailFragment_to_cityListFragment"
-            app:destination="@id/cityListFragment" />
         <argument
             android:name="city_name"
             app:argType="string" />

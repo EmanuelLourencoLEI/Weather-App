@@ -28,7 +28,7 @@ class StartScreenFragment : Fragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var geoCoder: Geocoder
     private lateinit var addressList: MutableList<Address>
-    private var locality = ""
+    private var completeCityId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +72,11 @@ class StartScreenFragment : Fragment() {
                 )
             } else {
                 addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-                locality = addressList[0].locality
+                completeCityId = addressList[0].locality + "," + addressList[0].countryName
 
                 findNavController().navigate(
                     StartScreenFragmentDirections.actionLaunchScreenFragmentToCityListFragment(
-                        locality
+                        completeCityId
                     )
                 )
             }
@@ -91,7 +91,7 @@ class StartScreenFragment : Fragment() {
                 addressList =
                     geoCoder.getFromLocation(lastLocation.latitude, lastLocation.longitude, 1)
             }
-            locality = addressList[0].locality
+            completeCityId = addressList[0].locality + "," + addressList[0].countryName
         }
     }
 

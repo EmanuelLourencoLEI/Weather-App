@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 class CityListAdapter(private val cityList: List<String>) :
     RecyclerView.Adapter<CityListAdapter.CityListViewHolder>() {
 
-
     /**
      * Provides a reference for the views needed to display items in your list.
      */

@@ -51,7 +51,8 @@ class CityListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.city_list)
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = CityListAdapter(cityList)

@@ -48,7 +48,7 @@ class CityDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "City Weather Details"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.city_details)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         getJsonData()
     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="button_item_label">Item de botão</string>
+    <string name="location">%s, %s</string>
+    <string name="humidity">Humidade</string>
+    <string name="pressure">Pressão</string>
+    <string name="wind">Vento</string>
+    <string name="sunset">Pôr do Sol</string>
+    <string name="sunrise">Nascer do Sol</string>
+    <string name="status">Céu Limpo</string>
+    <string name="current_temperature">%s °C</string>
+    <string name="minimum_temperature">Temperatura Min.: %s °C</string>
+    <string name="maximum_temperature">Temperatura Max.: %s °C</string>
+    <string name="sunrise_time">05:00 AM</string>
+    <string name="sunset_time">19:00 PM</string>
+    <string name="wind_speed">%s m/s NNE</string>
+    <string name="pressure_value">%s hPa</string>
+    <string name="humidity_value">%s</string>
+    <string name="error_message">Ocorreu um erro</string>
+    <string name="update_date">23 Agosto2022, 14:08 PM</string>
+    <string name="updated_at">Atualizado a %s</string>
+    <string name="launcher_image">Imagem do Início</string>
+    <string name="choose_language">Escolha a linguagem</string>
+    <string name="select_language">Selecione a linguagem</string>
+    <string name="pt_pt">Português</string>
+    <string name="en_en">Inglês</string>
+    <string name="fr_fr">Francês</string>
+    <string name="city_details">Detalhes da cidade</string>
+    <string name="city_list">Lista de Cidades</string>
+</resources>

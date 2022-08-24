@@ -2,11 +2,17 @@ package com.emanuel.lourenco.weatherapp
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +37,11 @@ class StartScreenFragment : Fragment() {
 
         geoCoder = Geocoder(requireActivity(), Locale.getDefault())
 
-        requestPermissions()
+        if (checkForInternet(requireActivity())) requestPermissions()
+        else {
+            showNoInternetDialog()
+        }
+
     }
 
     override fun onCreateView(
@@ -90,8 +100,9 @@ class StartScreenFragment : Fragment() {
             ActivityResultContracts.RequestMultiplePermissions()
         )
         { permissions ->
-            var isGranted = false
             // Handle Permission granted/rejected
+            var isGranted = false
+
             permissions.entries.forEach {
                 isGranted = it.value
             }
@@ -120,5 +131,57 @@ class StartScreenFragment : Fragment() {
         denyDialog.show()
     }
 
+    private fun showNoInternetDialog() {
+        val denyDialog = AlertDialog.Builder(requireActivity())
+
+        denyDialog.setTitle("Permission Needed!")
+        denyDialog.setMessage("You can´t use the app without Wi-Fi!\n Turn on the Wi-Fi and start the app again!")
+
+        denyDialog.setPositiveButton("OK") { _, _ ->
+            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+            exitProcess(0)
+        }
+        denyDialog.setNegativeButton("Exit App") { _, _ -> exitProcess(0) }
+        denyDialog.show()
+    }
+
+    private fun checkForInternet(context: Context): Boolean {
+        // register activity with the connectivity manager service
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        // if the android version is equal to M
+        // or greater we need to use the
+        // NetworkCapabilities to check what type of
+        // network has the internet connection
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            // Returns a Network object corresponding to
+            // the currently active default data network.
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                // else return false
+                else -> false
+            }
+        } else {
+            // if the android version is below M
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
 }
 

@@ -28,4 +28,11 @@
     <string name="fr_fr">Francês</string>
     <string name="city_details">Detalhes da cidade</string>
     <string name="city_list">Lista de Cidades</string>
+    <string name="lisbon">Lisboa</string>
+    <string name="berlin">Berlim</string>
+    <string name="copenhagen">Copenhaga</string>
+    <string name="rome">Roma</string>
+    <string name="london">Londres</string>
+    <string name="prague">Praga</string>
+    <string name="vienna">Viena</string>
 </resources>

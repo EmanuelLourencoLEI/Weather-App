@@ -54,6 +54,8 @@ class CityListFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.city_list)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
 
+        translateCities()
+
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = CityListAdapter(cityList)
     }
@@ -61,5 +63,15 @@ class CityListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun translateCities(){
+        cityList[0] = getString(R.string.lisbon)
+        cityList[3] = getString(R.string.berlin)
+        cityList[4] = getString(R.string.copenhagen)
+        cityList[5] = getString(R.string.rome)
+        cityList[6] = getString(R.string.london)
+        cityList[8] = getString(R.string.prague)
+        cityList[9] = getString(R.string.vienna)
     }
 }

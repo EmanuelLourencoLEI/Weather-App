@@ -28,7 +28,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/location"
                 android:textColor="#0277BD"
-                android:textSize="24sp" />
+                android:textSize="20sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMinTextSize="20sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/update_date"
@@ -36,7 +40,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/update_date"
                 android:textColor="#039BE5"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMinTextSize="14sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
         </LinearLayout>
 
 
@@ -54,7 +62,11 @@
                 android:layout_gravity="center"
                 android:text="@string/status"
                 android:textColor="#40C4FF"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMinTextSize="18sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/current_temperature"
@@ -64,7 +76,11 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="@string/current_temperature"
                 android:textColor="#2196F3"
-                android:textSize="90sp" />
+                android:textSize="50sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMinTextSize="50sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,7 +148,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sunrise"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/sunrise"
@@ -140,7 +160,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sunrise_time"
                         android:textColor="#000000"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
 
                 <Space
@@ -172,7 +196,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sunset"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/sunset"
@@ -180,7 +208,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sunset_time"
                         android:textColor="#000000"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
 
                 <Space
@@ -212,7 +244,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/wind"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/wind"
@@ -220,7 +256,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/wind_speed"
                         android:textColor="#000000"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -259,7 +299,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pressure"
                         android:textColor="#212121"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/pressure"
@@ -267,7 +311,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pressure_value"
                         android:textColor="#212121"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
 
                 <Space
@@ -299,7 +347,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/humidity"
                         android:textColor="#212121"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/humidity"
@@ -307,7 +359,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/humidity_value"
                         android:textColor="#212121"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:autoSizeMaxTextSize="100sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeStepGranularity="1sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
 
                 <Space

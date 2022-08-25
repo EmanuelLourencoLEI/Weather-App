@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/drawable/app_icon_background.xml" value="0.2985" />
         <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/drawable/gradient.xml" value="0.2985" />
+        <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
         <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/layout-land/fragment_city_detail.xml" value="0.33" />
         <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/layout-land/fragment_launch_screen.xml" value="0.31040564373897706" />
         <entry key="..\:/Users/manub/OneDrive/Documentos/Trabalho/KotlinApps/WeatherApp/app/src/main/res/layout/activity_city_detail.xml" value="0.358695652173913" />

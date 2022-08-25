@@ -14,25 +14,27 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+/**
+ * Fragment for the display of the weather information of the specified city.
+ */
 class CityDetailFragment : Fragment() {
-    companion object {
-        const val CITY_NAME = "city_name"
-    }
-
+    // Binding object instance corresponding to the fragment_city_detail.xml layout
     private var _binding: FragmentCityDetailBinding? = null
 
     // This property is only valid between onCreateView and
-    // onDestroyView.
+    // onDestroyView lifecycle callbacks,
+    // when the view hierarchy is attached to the fragment
     private val binding get() = _binding!!
 
+    //Variable that contains the specified city name
     private lateinit var cityId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            cityId = it.getString(CITY_NAME).toString()
+            //Gets the specified city name to use to obtain the weather information from the openweathermap API
+            cityId = it.getString("city_name").toString()
         }
 
         completeCityId()
@@ -48,8 +50,15 @@ class CityDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.city_details)
+        super.onViewCreated(view, savedInstanceState)
+
+        //Sets the action bar title
+        (requireActivity() as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.city_details)
+
+        //Sets the fragment to show the custom action bar
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
+
         getJsonData()
     }
 
@@ -61,6 +70,10 @@ class CityDetailFragment : Fragment() {
         _binding = null
     }
 
+    /**
+     * Function used to to add the country that is associated with the city
+     * since there are cities with the same name but from different countries
+     */
     private fun completeCityId() {
         when (cityId) {
             "Lisbon" -> cityId = "Lisbon,PT"
@@ -76,12 +89,21 @@ class CityDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Function used to get the json data from the openweathermap API
+     * with the help of the HTTP library Volley
+     */
     private fun getJsonData() {
         hideContainer()
 
+        //Creates a new Request Queue instance
         val queue = Volley.newRequestQueue(this.context)
+
+        //URL that contains the city name and the API KEY used to get the json data from the openweathermap API
         val url =
             "https://api.openweathermap.org/data/2.5/weather?q=$cityId&units=metric&appid=${BuildConfig.API_KEY}"
+
+        //Request made to the openweathermap API to get the json data
         val jsonRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->
@@ -91,15 +113,21 @@ class CityDetailFragment : Fragment() {
                 showErrorMessage()
             })
 
+        //Add the json request to the queue
         queue.add(jsonRequest)
     }
 
+    /**
+     * Function used to bind the json data obtained from the openweathermap API
+     */
     private fun bindCityDetails(response: JSONObject) {
+        //JSON Objects that contain the various types of json data
         val main = response.getJSONObject("main")
         val sys = response.getJSONObject("sys")
         val wind = response.getJSONObject("wind")
         val weather = response.getJSONArray("weather").getJSONObject(0)
 
+        //Binding the json data to the corresponding text view
         binding.location.text =
             getString(R.string.location, response.getString("name"), sys.getString("country"))
         binding.wind.text = getString(R.string.wind_speed, wind.getString("speed"))
@@ -128,16 +156,25 @@ class CityDetailFragment : Fragment() {
         showContainer()
     }
 
+    /**
+     * Function used to show the loader and hide the main container while the json request is processed
+     */
     private fun hideContainer() {
         binding.loader.visibility = View.VISIBLE
         binding.mainContainer.visibility = View.GONE
     }
 
+    /**
+     * Function used to show the main container and hide the loader when the json request is finished
+     */
     private fun showContainer() {
         binding.loader.visibility = View.GONE
         binding.mainContainer.visibility = View.VISIBLE
     }
 
+    /**
+     * Function used to show error message in case of API request failure
+     */
     private fun showErrorMessage() {
         binding.loader.visibility = View.GONE
         binding.errorText.visibility = View.VISIBLE

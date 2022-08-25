@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         loadLocale()
 
-        //Enables binding on the application
+        //Enables view binding on the application
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Creates the custom action bar
+     * Creates the custom action bar.
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.custom_action_bar, menu)
@@ -59,19 +59,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Makes the language option selectable to change the language
+     * Makes the language option selectable to change the language.
      */
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            //When the selected item is the language selection button
+            //When the selected item is the language selection button opens a dialog to choose a language
             R.id.choose_language -> setLanguage()
         }
         return super.onOptionsItemSelected(item)
     }
 
     /**
-     * Function used to set the language through an alert dialog
+     * Function used to set the language through an alert dialog.
      */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setLanguage() {
@@ -89,34 +89,39 @@ class MainActivity : AppCompatActivity() {
         languageSelector.setSingleChoiceItems(languageList, -1) { dialog, selection ->
             when (selection) {
                 0 -> {
-                    //Sets the locale to england
+                    //Sets the default locale to england
                     setLocale("en")
                 }
 
                 1 -> {
-                    //Sets the locale to portugal
+                    //Sets the default locale to portugal
                     setLocale("pt")
                 }
 
                 2 -> {
-                    //Sets the locale to france
+                    //Sets the default locale to france
                     setLocale("fr")
                 }
 
             }
+
             //Recreate the application to load the new locale
             recreate()
+
+            //Dismiss the dialog
             dialog.dismiss()
         }
+
+        //Creates the language selection dialog
         languageSelector.create().show()
     }
 
     /**
-     * Function used to set the locale through the locale received by argument
+     * Function used to set the locale through the locale received by argument.
      */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setLocale(localeToSet: String) {
-        //String that contains the new locale
+        //String that contains the new default locale
         val localeListToSet = LocaleList(Locale(localeToSet))
 
         //Set the default locale
@@ -133,7 +138,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Function used to load the locale saved in the shared preferences in setLocale function
+     * Function used to load the locale saved in the shared preferences in setLocale function.
      */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun loadLocale() {

@@ -16,6 +16,10 @@ import com.emanuel.lourenco.weatherapp.databinding.FragmentCityListBinding
 class CityListFragment : Fragment() {
     // Binding object instance corresponding to the fragment_city_list.xml layout
     private var _binding: FragmentCityListBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView lifecycle callbacks,
+    // when the view hierarchy is attached to the fragment
     private val binding get() = _binding!!
 
     //List of cities used to check weather information
@@ -36,7 +40,7 @@ class CityListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            //Adds the last city location of the user to the city list
+            //Adds the last user location to the city list
             cityList.add(it.getString("last_location").toString())
         }
     }
@@ -58,7 +62,7 @@ class CityListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Sets the action title
+        //Sets the action bar title
         (requireActivity() as AppCompatActivity).supportActionBar?.title =
             getString(R.string.city_list)
 
@@ -69,6 +73,7 @@ class CityListFragment : Fragment() {
 
         // Sets the LayoutManager of the recyclerview
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
         // Sets the Adapter of the recyclerview
         binding.recyclerView.adapter = CityListAdapter(cityList)
     }

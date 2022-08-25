@@ -46,7 +46,8 @@ class CityListAdapter(private val cityList: List<String>) :
     override fun onBindViewHolder(holder: CityListViewHolder, position: Int) {
         //Variable that holds a city of the city list
         val item = cityList[position]
-        //creates a new view with the current city of the variable "item"
+
+        //Creates a new view with the current city of the variable item
         holder.button.text = item
 
         // Assigns a [OnClickListener] to the button contained in the [ViewHolder]
@@ -54,7 +55,8 @@ class CityListAdapter(private val cityList: List<String>) :
             //Action used to navigate from city list fragment to city detail fragment
             val action =
                 CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(cityName = holder.button.text.toString())
-            //View controller used to navigate through fragments
+
+            //Nav controller used to navigate through fragments
             holder.view.findNavController().navigate(action)
         }
     }
